@@ -61,4 +61,13 @@ def handle_query(call):
     elif call.data == 'button2':
         bot.send_message(call.message.chat.id, hard_level())
 
+def send_reminders(chat_id):
+    first_rem = '15:00'
+    while True:
+        now = datetime.datetime.now().strftime('%H:%M')
+        if now == first_rem:
+            bot.send_message(chat_id, "Не желаете обновить пароли?")
+            time.sleep(61)
+        time.sleep(1)
+
 bot.polling(none_stop=True)
